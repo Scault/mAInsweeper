@@ -1,8 +1,11 @@
 # mAInsweeper
 
 ## Reward
-The reward is the amount of cells opened. A perfect game gets a score of 1, and an opened mine subtracts 1 score, while pressing a cell that has no effect gives a small penalty.
-
+The reward is the amount of cells opened.
+- A perfect game receives a score of 1
+- Opening a safe cell will reward 1/(total # of safe cells)
+- Opening a cell that has no effect receives a small penalty
+- Opening a mine subtracts 1 from the score
 
 ## Installaton
 ```bash
@@ -10,7 +13,6 @@ pip install -r requirements.txt
 ```
 
 ## Demo
-
 ```bash
 python demo.py
 ```
