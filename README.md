@@ -16,7 +16,7 @@ pip install -r requirements.txt
 ```bash
 python demo.py
 ```
-<img src="https://i.imgur.com/mKe3vwd.gif" alt="drawing" width="300"/>
+<img src="./demo.gif" alt="demo.py Gif" width="300"/>
 
 `env.render()` defaults to displaying a PyGame visualization.
 Alternatively, use `env.render('ansi')` to print
