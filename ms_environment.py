@@ -198,8 +198,8 @@ class MinesweeperEnv(gym.Env):
             "steps": self.steps,
             "unnecessary steps": self.unnecessary_steps,
             "game over": self._game_over(),
-            "mine locations": self.mines.astype(int),
-            "opened cell": self._parse_action(action)
+            "opened cell": self._parse_action(action),
+            "mine locations": self.mines.astype(int)
         }
 
     def _assert_invariants(self):
