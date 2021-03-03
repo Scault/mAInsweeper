@@ -1,5 +1,5 @@
 import gym
-from ms_environment import MinesweeperEnv
+from env.ms_environment import MinesweeperEnv
 import time
 
 # TODO: adjust the recursion limit according to the window size
