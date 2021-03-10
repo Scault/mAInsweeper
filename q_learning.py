@@ -6,11 +6,14 @@ import pickle
 import os
 import sys
 
-NUM_MINES = 100
-WIDTH = 30
-HEIGHT = 30
+SAVE = False
 
-NUM_EPISODES  = 250
+NUM_MINES = 20
+WIDTH = 10
+HEIGHT = 10
+PUNISHMENT = 0.01
+
+NUM_EPISODES  = 10000
 LEARNING_RATE = 0.7
 GAMMA         = 0.95
 MAX_EPSILON   = 1.0
@@ -22,7 +25,7 @@ env = MinesweeperEnv(width=WIDTH,
                      num_mines=NUM_MINES,
                      flood_fill=True,
                      debug=False,
-                     punishment=0.01,
+                     punishment=PUNISHMENT,
                      seed=None,
                      first_move_safe=True,
                      pause_after_end=False)
@@ -47,7 +50,7 @@ def main():
         env.observation_space.shape[1],
         NUM_MINES))
 
-    if os.path.exists(file_name):
+    if os.path.exists(file_name) and SAVE:
         qtable = pickle.load(open(file_name, "rb"))
     else:
         qtable = {}
@@ -66,6 +69,7 @@ def main():
 
         for step in range(max_steps):
             exp_exp_tradeoff = random.uniform(0, 1)
+            state_str = board_to_string(state)
 
             # Exploitation
             if exp_exp_tradeoff > epsilon:
@@ -99,7 +103,9 @@ def main():
 
 
     print("Average score: {}".format(sum(rewards)/NUM_EPISODES))
-    pickle.dump(qtable, open(file_name, "wb"))
+
+    if SAVE:
+        pickle.dump(qtable, open(file_name, "wb"))
 
 
 if __name__ == '__main__':
